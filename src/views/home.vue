@@ -34,7 +34,7 @@
                     <span>权限列表</span>
                 </template>
             </el-menu-item>
-            <el-menu-item index="roles">
+            <el-menu-item index="/home/roles">
                 <template slot="title">
                     <i class="el-icon-menu"></i>
                     <span>角色列表</span>
