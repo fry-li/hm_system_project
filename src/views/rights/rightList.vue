@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { getAllRight } from "@/api/right_index.js";
+import { getAllRightList } from "@/api/right_index.js";
 export default {
   data() {
     return {
@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-    getAllRight("list")
+    getAllRightList("list")
     .then(res => {
       console.log(res)
       if (res.data.meta.status === 200) {

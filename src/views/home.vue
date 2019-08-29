@@ -41,6 +41,36 @@
                 </template>
             </el-menu-item>
           </el-submenu>
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>订单管理</span>
+            </template>
+            <el-menu-item index="/home/users">
+                <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span>订单列表</span>
+                </template>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="4">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>商品管理</span>
+            </template>
+            <el-menu-item index="/home/users">
+                <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span>商品列表</span>
+                </template>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="5">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>数据统计</span>
+            </template>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <el-container>
