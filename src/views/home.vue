@@ -11,65 +11,25 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-submenu index="1">
+        <!-- [1,2,3]
+        arr.forEach((element,index)=>{
+          element = arr[i]
+          index = i
+        })
+        for(let i = 0; i < arr.length; i++){
+          console.log(arr[i])
+        } -->
+          <el-submenu :index="item.id+''" v-for="item in menulist" :key='item.id'>
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>用户管理</span>
+              <span>{{item.authName}}</span>
             </template>
-            <el-menu-item index="/home/users">
+            <el-menu-item :index="'/home/'+subitem.path" v-for="subitem in item.children" :key="subitem.id">
                 <template slot="title">
                     <i class="el-icon-menu"></i>
-                    <span>用户列表</span>
+                    <span>{{subitem.authName}}</span>
                 </template>
             </el-menu-item>
-          </el-submenu>
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>权限管理</span>
-            </template>
-            <el-menu-item index="rights">
-                <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span>权限列表</span>
-                </template>
-            </el-menu-item>
-            <el-menu-item index="/home/roles">
-                <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span>角色列表</span>
-                </template>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>订单管理</span>
-            </template>
-            <el-menu-item index="/home/users">
-                <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span>订单列表</span>
-                </template>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="4">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>商品管理</span>
-            </template>
-            <el-menu-item index="/home/users">
-                <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span>商品列表</span>
-                </template>
-            </el-menu-item>
-          </el-submenu>
-          <el-submenu index="5">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>数据统计</span>
-            </template>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -88,8 +48,22 @@
 </template>
 
 <script>
+import {getLeftMenu} from '@/api/right_index.js'
 export default {
-
+  data(){
+    return{
+      menulist:[]
+    }
+  },
+    mounted(){
+      getLeftMenu()
+      .then(res=>{
+        console.log(res)
+        if(res.data.meta.status===200){
+          this.menulist = res.data.data
+        }
+      })
+    }
 }
 </script>
 
